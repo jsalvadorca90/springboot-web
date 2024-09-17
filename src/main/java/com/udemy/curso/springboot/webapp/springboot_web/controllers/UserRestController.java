@@ -8,13 +8,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.udemy.curso.springboot.webapp.springboot_web.models.User;
+import com.udemy.curso.springboot.webapp.springboot_web.models.dto.UserDto;
 
 @RestController
 @RequestMapping("/api")
 public class UserRestController {
 
     @GetMapping("/details")
-    public Map<String, Object> details() {
+    public UserDto details() {
+
+        User user = new User("José", "Ñandú");
+
+        UserDto userDto = new UserDto();
+        userDto.setUser(user);
+        // userDto.setUser(user.getName());
+        // userDto.setLastName(user.getLastName());
+        userDto.setTitle("¡Hola Mundo!");
+
+        return userDto;
+    }
+
+    @GetMapping("/details-map")
+    public Map<String, Object> detailsMap() {
 
         User user = new User("José", "Ñandú");
 
