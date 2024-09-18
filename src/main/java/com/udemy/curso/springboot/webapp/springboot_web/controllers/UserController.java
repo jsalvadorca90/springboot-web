@@ -13,7 +13,7 @@ public class UserController {
     public String details(Model model) {
 
         User user = new User("José", "Ñandú");
-        
+        user.setEmail("hola_mundo@correo.com");
         model.addAttribute("title","¡Hola Mundo!");
         model.addAttribute("user",user);
         // model.addAttribute("lastName", "Ñandú");        
