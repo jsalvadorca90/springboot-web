@@ -3,11 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- información pasado desde el controlador 'title', mayor prioridad que el texto 'Document' -->
     <title th:text="${title}">Document</title>
 </head>
 <body>
     <h1 th:text="${title}"></h1>
-
-    <div th:if="${users.size() == 0}" th:text="${'¡No tiene elementos usuarios!'}"></div>
+    <!-- si -->
+     <!-- datos pasados a la vista ["users"] desde el controlador 'UserController' [users] -->
+    <div th:if="${users.isEmpty()}" th:text="${'¡No tiene elementos usuarios!'}"></div>
+    <!-- sino -->
+    <table th:if="${not users.isEmpty()}">
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>lastName</th>
+                <th>email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- itera sobre una colección llamada 'users' y cada elemento se asignará a una variable llamada 'user' -->
+            <tr th:each="user: ${users}">
+                <!-- accedemos a las propiedades 'name, lastName y email' del elemento actual 'user' -->
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.lastName}"></td>
+                <td th:if="${user.email}" th:text="${user.email}"></td>
+                <td th:if="${not (user.email!=null)}" th:text="${' - '}"></td>
+            </tr>
+        </tbody>
+    </table>
+    
 </body>
 </html>
