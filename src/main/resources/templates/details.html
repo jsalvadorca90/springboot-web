@@ -14,5 +14,13 @@
         <li th:if="${user.email}" th:text="${user.email}"></li>
         <li th:if="${user.email == null}" th:text="${'No tiene email'}"></li>
     </ul>
+     <!-- estas URLs están siendo construidas de forma dinámica utilizando la expresión 'th:href' -->
+    <a th:href="@{/list}">Ver Listado</a><br>
+    <a th:href="@{/api/params/foo?message=Hola qué tal festival}">Ver Mensaje</a><br>
+    <a th:href="@{/api/params/foo(message='Hola qué tal festival')}">Ver Mensaje 2</a><br>
+    <a th:href="@{/api/params/bar(text='Hola qué tal festival', code=32323)}">Ver Bar Mix 2 Param</a><br>
+    <!-- En este caso, se está concatenando una cadena fija con el valor de una variable del modelo llamado 'title' -->
+    <a th:href="@{'/api/var/baz/' + ${title}}">Ver Path Variable</a><br>
+    <a th:href="@{'/api/var/baz/' + 'Hola qué tal festival'}">Ver Path Variable 2</a><br>
 </body>
 </html>
