@@ -26,8 +26,12 @@
                 <!-- accedemos a las propiedades 'name, lastName y email' del elemento actual 'user' -->
                 <td th:text="${user.name}"></td>
                 <td th:text="${user.lastName}"></td>
-                <td th:if="${user.email}" th:text="${user.email}"></td>
+                <td th:if="${user.email}" th:text="${user.email}">Este 'th:text' se muestra si la condición es verdadera.</td>
                 <td th:if="${not (user.email!=null)}" th:text="${' - '}"></td>
+                <!-- forma alterna para el 'else' en thymeleaf
+                <td th:unless="${user.email}" th:text="${' - '}">Este 'th:text' se muestra si la condición es falsa.</td> -->
+                <!-- forma alterna para el 'if else' en thymeleaf
+                <td th:text="${user.email} ?: ' - '"></td>              -->
             </tr>
         </tbody>
     </table>
